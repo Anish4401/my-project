@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id          String @id @default(cuid())
+  // @id @default(uuid()) we can use it but we will directly fetch the client id. so rn we wont be doing this
+  email       String
+  family_name String
+  given_name  String
+  picture     String
+
+  username     String
+  phone_number String
+}
